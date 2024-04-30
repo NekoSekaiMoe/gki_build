@@ -1,0 +1,29 @@
+name: 'Android GKI Kernel Build Action'
+description: "A action to built android GKI kernel."
+
+branding:
+  icon: 'activity'
+  color: 'blue'
+
+inputs:
+  version:
+    required: true
+    description: "GkI Kernel Source Pull Version."
+    default: "android12-5.10"
+  version_name:
+    required: true
+    description: "GKI Kernel Sublevel."
+    default: "android12-5.10.66"
+  tag:
+    required: true
+    description: "Part of branch name of common kernel manifest."
+    default: "android12-5.10-2021-11"
+  os_patch_level:
+    required: true
+    description: "Patch level of common kernel manifest."
+    default: "2021-11"
+
+runs:
+  using: node20
+  main: dist/index.js
+  post: dist/post.js
