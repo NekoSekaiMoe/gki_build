@@ -16,8 +16,10 @@
 # limitations under the License.
 NODE_MODULES = ./node_modules
 
-ifeq ("","")
-  INSTALL = pnpm i
+ifeq ("$(wildcard $(NODE_MODULES))","")
+  INSTALL = yarn install --frozen-lockfile && date
+else
+  INSTALL = date
 endif
 
 BUILD = ncc build
